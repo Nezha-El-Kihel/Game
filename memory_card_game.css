@@ -1,0 +1,219 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+body{
+	height: 100vh;
+	display: flex;
+}
+#next{
+	display: none;
+}
+
+.menu{
+	width: 100%;
+	height: 100%;	
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.menu h1{
+	padding: 20px;
+}
+.menu #levels{
+	width: 100%;
+}
+ul{
+	list-style: none;
+	width: 100%;
+	height: auto;
+	padding: 10px;
+}
+li{
+	display: inline-flex;
+	/*flex-direction: column;*/
+	width: 90%;
+	height: 40px;
+	box-shadow: 1px 1px 3px;
+	margin: 10px;
+	padding-left: 30px;
+	position: relative;
+	font-family: 'Gloria Hallelujah', cursive;
+	font-style: italic;
+	font-weight: bold;
+}
+li:hover{
+	box-shadow: 2px 2px 5px;
+}
+li span{
+	line-height: 40px;
+}
+li .play_btn{
+	position: absolute;
+	right: 0;
+	line-height: 40px;
+	border: none;
+	outline: none;
+	width: 60px;
+	padding-right: 25px;
+	padding-left: 25px;
+	cursor: pointer;
+}
+li .play_btn:hover, li .play_btn:focus{
+	background-color: green
+}
+li .play_btn i{
+	font-size: 1.5em;
+}
+/*li img{
+	width: 100%;
+	height: 80%;
+}*/
+.gameContainer{
+	width: 700px;
+	height: 500px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	perspective: 1000px;
+}
+.memoryCard{
+	width: 24.2%;
+	height: 24%;
+	margin: 2.5px;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: transform 0.3s;
+	cursor: pointer;
+}
+#princess_disney .memoryCard{
+	background-color: black;
+}
+.memoryCard:active{
+	transform: scale(0.95);
+	transition: transform 0.2s ease-in-out;
+}
+.memoryCard.flip{
+	transform: rotateY(180deg);
+	cursor: pointer;
+}
+.front, .back{
+	background-color: #fff;
+	width: 100%;
+	height: 100%;
+	padding: 1px;
+	border-radius: 30px;
+	position: absolute;
+	backface-visibility: hidden;
+}
+.front{
+	transform: rotateY(180deg);
+}
+.overlay{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+}
+.overlay:target{
+	visibility: visible;
+	opacity: 1;
+}
+.popup{
+	/*margin: 70px auto;*/
+	padding: 20px;
+	background: white;
+	border-radius: 5px;
+	width: 55%;
+	position: relative;
+	/*transition: all 5s ease-in-out;*/
+	font-family: 'Gloria Hallelujah', cursive;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.popup h2{
+	margin-bottom: 20px;
+	color: #333;
+	font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close{
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333;
+}
+.popup .close:hover{
+	color: red;
+}
+.popup .content-1,
+.content-2{
+	max-height: 30%;
+	overflow: auto;
+	text-align: center;
+}
+.show{
+	visibility: visible !important;
+	opacity: 100 !important;
+}
+.btn_box{
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+}
+.btn{
+	background-color: #141214;
+	padding: 0.7rem 1rem;
+	font-size: 1.1rem;
+	display: block;
+	margin: 20px auto;
+	width: 	33%;
+	font-family: 'Gloria Hallelujah', cursive;
+	color: #ffffff;
+	border-radius: 5px;
+	cursor: pointer;
+}
+@media(max-width: 550px){
+	.gameContainer{
+		width: 100%;
+		height: 500px;
+		margin: auto;
+		display: flex;
+		flex-wrap: wrap;
+		perspective: 1000px;
+	}
+	.memoryCard{
+		width: 23.5%;
+		height: 23%;
+		margin: 2.5px;
+		position: relative;
+		transform-style: preserve-3d;
+		transition: transform 0.3s;
+		cursor: pointer;
+	}
+}
+@media(max-width: 750px){
+	.btn_box{
+		display: block;
+	}
+	.popup{
+		width: 80%;
+	}
+	.btn{
+		width: 60%;
+	}
+}
